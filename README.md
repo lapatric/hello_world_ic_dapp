@@ -1,42 +1,32 @@
-# hello
+## Simple "hello" App
 
-To learn more, see the following documentation available online:
+### Running the project locally
 
-- [Quick Start](https://sdk.dfinity.org/docs/quickstart/quickstart-intro.html)
-- [SDK Developer Tools](https://sdk.dfinity.org/docs/developers-guide/sdk-guide.html)
-- [Motoko Programming Language Guide](https://sdk.dfinity.org/docs/language-guide/motoko.html)
-- [Motoko Language Quick Reference](https://sdk.dfinity.org/docs/language-guide/language-manual.html)
-- [JavaScript API Reference](https://erxue-5aaaa-aaaab-qaagq-cai.raw.ic0.app)
-
-If you want to start working right away, you might want to try the following commands:
+If you want to test the project locally, you can use the following commands:
 
 ```bash
-cd hello/
-dfx help
-dfx canister --help
-```
+# Check current status of IC blockchain and our connection to it
+dfx ping ic
 
-## Running the project locally
-
-If you want to test your project locally, you can use the following commands:
-
-```bash
-# Starts the replica, running in the background
+# Starts the execution environement (dfinity blockchain replica)
 dfx start --background
 
 # Deploys your canisters to the replica and generates your candid interface
 dfx deploy
+
+# Start frontent development server at http://localhost:8080
+npm start
+
+# Stop local network replica
+dfx stop
 ```
 
-Once the job completes, your application will be available at `http://localhost:8000?canisterId={asset_canister_id}`.
-
-Additionally, if you are making frontend changes, you can start a development server with
+### Interacting with the app
+To interact with the deployed application you can try the following command, where `hello_backend` is the name of the canister, `greet` is one of its functions and `everyone` is the parameter we pass to it. See canister code [here](./src/hello_backend/main.mo).
 
 ```bash
-npm start
+dfx canister call hello_backend greet everyone
 ```
-
-Which will start a server at `http://localhost:8080`, proxying API requests to the replica at port 8000.
 
 ### Note on frontend environment variables
 
